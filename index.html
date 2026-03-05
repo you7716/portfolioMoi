@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio - Youssouph Sagna</title>
+    <meta
+      name="description"
+      content="Portfolio de Youssouph Sagna, ingénieur logiciel et étudiant en Master 1 SSI à l'ESMT, développeur et support IT à la Banque Atlantique Sénégal."
+    />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230ea5e9'/%3E%3Cstop offset='100%25' stop-color='%236b21a8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Cpath d='M16 44L28 20h4l12 24h-5.5L34 30.5 25.5 44H16z' fill='white'/%3E%3C/svg%3E" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+            colors: {
+              primary: {
+                50: "#eef9ff",
+                100: "#dff2ff",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                700: "#0369a1",
+              },
+              accent: {
+                500: "#a855f7",
+                600: "#9333ea",
+              },
+            },
+            boxShadow: {
+              soft: "0 24px 60px rgba(15,23,42,0.45)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Police Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .bg-orbit {
+        background:
+          radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.35), transparent 55%),
+          radial-gradient(circle at 100% 0%, rgba(147, 51, 234, 0.35), transparent 55%),
+          radial-gradient(circle at 0% 100%, rgba(56, 189, 248, 0.2), transparent 55%),
+          radial-gradient(circle at 100% 100%, rgba(147, 51, 234, 0.2), transparent 55%),
+          radial-gradient(circle at 50% 0%, rgba(15, 23, 42, 1), rgba(15, 23, 42, 1));
+      }
+
+      .glass {
+        backdrop-filter: blur(18px);
+        background: linear-gradient(
+          135deg,
+          rgba(15, 23, 42, 0.9),
+          rgba(15, 23, 42, 0.75),
+          rgba(15, 23, 42, 0.9)
+        );
+        border: 1px solid rgba(148, 163, 184, 0.22);
+      }
+
+      .section-fade {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      }
+
+      .section-fade.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen bg-slate-950 text-slate-100 font-sans">
+    <div class="relative min-h-screen overflow-hidden bg-orbit">
+      <!-- Halo animé -->
+      <div class="pointer-events-none absolute inset-0 opacity-60 mix-blend-screen">
+        <div class="absolute -left-40 top-40 h-72 w-72 rounded-full bg-primary-500 blur-3xl"></div>
+        <div class="absolute -right-40 -top-10 h-80 w-80 rounded-full bg-accent-500 blur-3xl"></div>
+        <div class="absolute left-1/3 bottom-0 h-80 w-80 rounded-full bg-primary-600 blur-3xl"></div>
+      </div>
+
+      <!-- Conteneur principal -->
+      <div class="relative z-10">
+        <!-- Navigation -->
+        <header
+          class="sticky top-0 z-30 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl"
+        >
+          <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+            <div class="flex items-center gap-2">
+              <div
+                class="flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 text-xl font-semibold shadow-soft"
+              >
+                YS
+              </div>
+              <div class="leading-tight">
+                <p class="text-sm font-semibold tracking-wide text-slate-100">
+                  Youssouph Sagna
+                </p>
+                <p class="text-xs text-slate-400">
+                  Génie Logiciel · Master 1 SSI
+                </p>
+              </div>
+            </div>
+
+            <div class="hidden items-center gap-6 text-xs font-medium text-slate-300 md:flex">
+              <a href="#accueil" class="hover:text-primary-300 transition-colors">Accueil</a>
+              <a href="#profil" class="hover:text-primary-300 transition-colors">Profil</a>
+              <a href="#competences" class="hover:text-primary-300 transition-colors">Compétences</a>
+              <a href="#experiences" class="hover:text-primary-300 transition-colors">Expériences</a>
+              <a href="#formations" class="hover:text-primary-300 transition-colors">Formations</a>
+              <a href="#certifications" class="hover:text-primary-300 transition-colors">Certifications</a>
+              <a href="#projets" class="hover:text-primary-300 transition-colors">Projets</a>
+              <a href="#contact" class="hover:text-primary-300 transition-colors">Contact</a>
+            </div>
+
+            <a
+              href="#contact"
+              class="hidden items-center gap-1 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 px-4 py-1.5 text-xs font-semibold text-white shadow-soft hover:shadow-lg hover:shadow-primary-500/50 md:inline-flex"
+            >
+              Discutons
+              <span aria-hidden="true">↗</span>
+            </a>
+          </nav>
+        </header>
+
+        <!-- Hero -->
+        <main class="mx-auto flex max-w-6xl flex-col gap-14 px-4 pb-16 pt-10 sm:px-6 lg:pt-14">
+          <section
+            id="accueil"
+            class="section-fade grid gap-10 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:items-center"
+          >
+            <div>
+              <div
+                class="inline-flex items-center gap-2 rounded-full border border-slate-700/80 bg-slate-900/70 px-2.5 py-1 text-xs text-slate-300 shadow-soft"
+              >
+                <span
+                  class="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_0_4px_rgba(16,185,129,0.4)]"
+                ></span>
+                Développeur & Support IT · Dakar, Sénégal
+              </div>
+
+              <h1 class="mt-5 text-balance text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl">
+                Concevoir, sécuriser et sublimer les
+                <span class="bg-gradient-to-r from-primary-300 via-accent-300 to-primary-200 bg-clip-text text-transparent">
+                  expériences numériques
+                </span>
+              </h1>
+
+              <p class="mt-4 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
+                Ingénieur en <span class="font-semibold">Génie Logiciel</span>, actuellement en
+                <span class="font-semibold">Master 1 Sécurité des Systèmes d’Information</span> à
+                l’<span class="font-semibold">ESMT</span>, et en CDD à la
+                <span class="font-semibold">Banque Atlantique Sénégal</span> depuis 2025.
+                J’aime transformer des besoins métiers complexes en solutions logicielles élégantes,
+                fiables et faciles à maintenir.
+              </p>
+
+              <div class="mt-6 flex flex-wrap items-center gap-4">
+                <a
+                  href="#projets"
+                  class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 px-5 py-2 text-sm font-semibold text-white shadow-soft hover:translate-y-0.5 hover:shadow-lg hover:shadow-primary-500/40 transition-all"
+                >
+                  Voir mes travaux
+                  <span aria-hidden="true">✨</span>
+                </a>
+                <a
+                  href="#contact"
+                  class="inline-flex items-center gap-2 rounded-full border border-slate-600/80 bg-slate-900/60 px-4 py-2 text-xs font-medium text-slate-200 hover:border-primary-400 hover:text-primary-100 transition-colors"
+                >
+                  Me contacter
+                </a>
+              </div>
+
+              <dl class="mt-8 grid max-w-xl grid-cols-2 gap-4 text-xs text-slate-300 sm:text-sm">
+                <div class="rounded-xl bg-slate-900/60 p-3.5 shadow-soft ring-1 ring-slate-800/80">
+                  <dt class="text-[0.7rem] uppercase tracking-wide text-slate-400">
+                    Localisation
+                  </dt>
+                  <dd class="mt-1 font-medium">Grand Dakar · Dakar, Sénégal</dd>
+                </div>
+                <div class="rounded-xl bg-slate-900/60 p-3.5 shadow-soft ring-1 ring-slate-800/80">
+                  <dt class="text-[0.7rem] uppercase tracking-wide text-slate-400">
+                    Situation actuelle
+                  </dt>
+                  <dd class="mt-1 font-medium">
+                    CDD · Banque Atlantique Sénégal<br />
+                    Master 1 SSI · ESMT
+                  </dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- Carte profil -->
+            <aside
+              class="glass section-fade relative mt-2 rounded-3xl p-5 shadow-soft sm:p-6 md:mt-0"
+            >
+              <div
+                class="absolute inset-x-10 top-0 -translate-y-1/2 rounded-full bg-gradient-to-r from-primary-500/40 via-accent-500/40 to-primary-500/40 px-3 py-1 text-center text-[11px] font-medium text-sky-50 ring-1 ring-slate-400/20"
+              >
+                Ouvert aux opportunités en développement & sécurité des SI
+              </div>
+
+              <div class="mt-4 space-y-4 text-xs text-slate-200">
+                <div class="flex items-center justify-between gap-4">
+                  <div>
+                    <p class="text-[0.7rem] uppercase tracking-wide text-slate-400">
+                      Nom complet
+                    </p>
+                    <p class="mt-0.5 text-sm font-semibold">Youssouph Sagna</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="text-[0.7rem] uppercase tracking-wide text-slate-400">
+                      Permis
+                    </p>
+                    <p class="mt-0.5 text-sm font-medium">Permis B Sénégalais</p>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="rounded-xl border border-slate-700/70 bg-slate-950/30 p-3">
+                    <p class="text-[0.7rem] uppercase tracking-wide text-slate-400">
+                      Téléphone
+                    </p>
+                    <p class="mt-1 text-[13px] font-medium">
+                      <a href="tel:+221771608826" class="hover:text-primary-300">+221 77 160 88 26</a
+                      ><br />
+                      <a href="tel:+221762522197" class="hover:text-primary-300">+221 76 252 21 97</a>
+                    </p>
+                  </div>
+                  <div class="rounded-xl border border-slate-700/70 bg-slate-950/30 p-3">
+                    <p class="text-[0.7rem] uppercase tracking-wide text-slate-400">
+                      E-mails
+                    </p>
+                    <p class="mt-1 text-[12px] font-medium leading-relaxed">
+                      <a
+                        href="mailto:youssouphawoufeu@gmail.com"
+                        class="hover:text-primary-300"
+                      >
+                        youssouphawoufeu@gmail.com
+                      </a>
+                      <br />
+                      <a href="mailto:youssouph@groupeisi.com" class="hover:text-primary-300">
+                        youssouph@groupeisi.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="rounded-xl border border-slate-700/70 bg-slate-950/30 p-3">
+                  <p class="text-[0.7rem] uppercase tracking-wide text-slate-400">
+                    Objectif professionnel
+                  </p>
+                  <p class="mt-1 text-[13px] leading-relaxed">
+                    Concevoir, déployer et assurer la maintenance d’applications sécurisées, tout en
+                    accompagnant les utilisateurs et les équipes métiers dans la durée.
+                  </p>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 text-[11px]">
+                  <div
+                    class="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-center text-emerald-200"
+                  >
+                    Agile / SCRUM
+                  </div>
+                  <div
+                    class="rounded-full border border-primary-500/40 bg-primary-500/10 px-2 py-1 text-center text-primary-100"
+                  >
+                    Bilingue anglais
+                  </div>
+                  <div
+                    class="rounded-full border border-accent-500/40 bg-accent-500/10 px-2 py-1 text-center text-violet-100"
+                  >
+                    Sécurité des SI
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </section>
+
+          <!-- Profil -->
+          <section id="profil" class="section-fade grid gap-6 md:grid-cols-[3fr,2fr]">
+            <div class="glass rounded-3xl p-6 shadow-soft sm:p-7">
+              <h2 class="text-lg font-semibold tracking-tight text-slate-50 sm:text-xl">
+                Profil
+              </h2>
+              <p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-[15px]">
+                Je suis titulaire d’une
+                <span class="font-semibold">Licence 3 en Sciences et Technologie</span>,
+                spécialité <span class="font-semibold">Génie Logiciel</span> à l’Institut Supérieur
+                d’Informatique (<span class="font-semibold">Groupe ISI</span>, Dakar).
+                En 2026, j’ai démarré un
+                <span class="font-semibold">Master 1 en Sécurité des Systèmes d’Information</span>
+                à l’
+                <a
+                  href="https://www.esmt.sn"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="font-semibold text-primary-300 underline-offset-2 hover:underline"
+                >
+                  École Supérieure Multinationale des Télécommunications (ESMT)
+                </a>
+                afin de renforcer ma maîtrise des enjeux de cybersécurité.
+              </p>
+              <p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-[15px]">
+                Depuis juin 2025, j’occupe un
+                <span class="font-semibold">CDD à la Banque Atlantique Sénégal</span> en tant que
+                développeur et support IT. Cette double casquette me permet de comprendre à la fois
+                les contraintes techniques, la sécurité, et les attentes des utilisateurs finaux
+                dans un environnement bancaire exigeant.
+              </p>
+              <p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-[15px]">
+                Curieux, rigoureux et orienté résultats, je m’investis également dans des
+                <span class="font-semibold">projets open‑source</span>, la
+                <span class="font-semibold">veille technologique</span> et des activités
+                associatives, ce qui nourrit ma vision globale du numérique.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <div class="glass rounded-3xl p-5 shadow-soft">
+                <h3 class="text-sm font-semibold tracking-tight text-slate-100">
+                  Langues
+                </h3>
+                <dl class="mt-3 space-y-1.5 text-xs text-slate-200">
+                  <div class="flex items-center justify-between">
+                    <dt class="text-slate-300">Français</dt>
+                    <dd class="font-medium text-emerald-300">Courant</dd>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <dt class="text-slate-300">Wolof</dt>
+                    <dd class="font-medium text-emerald-300">Courant</dd>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <dt class="text-slate-300">Anglais</dt>
+                    <dd class="font-medium text-amber-300">Intermédiaire</dd>
+                  </div>
+                </dl>
+              </div>
+
+              <div class="glass rounded-3xl p-5 shadow-soft">
+                <h3 class="text-sm font-semibold tracking-tight text-slate-100">
+                  Centres d’intérêts
+                </h3>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+                  <li>Participation à des projets open‑source</li>
+                  <li>Veille technologique sur les tendances du développement logiciel</li>
+                  <li>Activités sportives et bénévolat associatif</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Compétences -->
+          <section id="competences" class="section-fade space-y-5">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h2 class="text-lg font-semibold tracking-tight text-slate-50 sm:text-xl">
+                  Compétences
+                </h2>
+                <p class="text-xs text-slate-300 sm:text-sm">
+                  De l’analyse fonctionnelle à la mise en production, avec une attention particulière
+                  à la sécurité et à l’expérience utilisateur.
+                </p>
+              </div>
+            </div>
+
+            <div class="grid gap-4 md:grid-cols-2">
+              <div class="glass rounded-3xl p-5 shadow-soft">
+                <h3 class="text-sm font-semibold text-slate-100">
+                  Traduction & analyse des besoins
+                </h3>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+                  <li>Participation à l’analyse fonctionnelle des besoins utilisateurs</li>
+                  <li>Étude d’opportunité et de faisabilité technologique des applications</li>
+                  <li>
+                    Élaboration et rédaction de
+                    <span class="font-semibold">cahiers des charges techniques</span> à partir des
+                    spécifications fonctionnelles
+                  </li>
+                </ul>
+              </div>
+
+              <div class="glass rounded-3xl p-5 shadow-soft">
+                <h3 class="text-sm font-semibold text-slate-100">
+                  Conception & développement
+                </h3>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+                  <li>Conception d’architectures logicielles modulaires et évolutives</li>
+                  <li>
+                    Bases en langages de programmation :
+                    <span class="font-semibold">Java</span>,
+                    <span class="font-semibold">JavaScript</span>,
+                    <span class="font-semibold">Python</span>
+                  </li>
+                  <li>
+                    Compréhension des <span class="font-semibold">technologies front‑end</span> :
+                    HTML5, CSS3, notions en JS côté client
+                  </li>
+                  <li>
+                    Connaissance de base des
+                    <span class="font-semibold">bases de données et SQL</span>
+                  </li>
+                  <li>Paramétrage et adaptation de progiciels à une architecture logicielle donnée</li>
+                </ul>
+              </div>
+
+              <div class="glass rounded-3xl p-5 shadow-soft">
+                <h3 class="text-sm font-semibold text-slate-100">
+                  Méthodes de travail & sécurité
+                </h3>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+                  <li>Capacité à travailler dans un environnement <span class="font-semibold">Agile / SCRUM</span></li>
+                  <li>Fondamentaux de la <span class="font-semibold">sécurité des systèmes d’information</span></li>
+                  <li>Gestion des incidents de sécurité (notions)</li>
+                  <li>Sensibilité à la qualité, à la maintenabilité et à la documentation</li>
+                </ul>
+              </div>
+
+              <div class="glass rounded-3xl p-5 shadow-soft">
+                <h3 class="text-sm font-semibold text-slate-100">
+                  Outils, support & soft skills
+                </h3>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+                  <li>Déploiement de postes de travail et outils bureautiques (Windows, Office)</li>
+                  <li>Installation et configuration d’antivirus, pilotes et logiciels divers</li>
+                  <li>Mise en place et maîtrise de <span class="font-semibold">GLPI</span></li>
+                  <li>Initiation à <span class="font-semibold">Orion</span> et à la maintenance informatique</li>
+                  <li>Compétences en communication, éthique du travail et travail en équipe</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Expériences -->
+          <section id="experiences" class="section-fade space-y-5">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h2 class="text-lg font-semibold tracking-tight text-slate-50 sm:text-xl">
+                  Expériences professionnelles & associatives
+                </h2>
+                <p class="text-xs text-slate-300 sm:text-sm">
+                  Entre environnement bancaire, support IT et engagement associatif.
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <article class="glass rounded-3xl p-5 shadow-soft sm:p-6">
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <h3 class="text-sm font-semibold text-slate-50">
+                      Développeur & Support IT (CDD)
+                    </h3>
+                    <p class="text-xs text-slate-300">
+                      Banque Atlantique Sénégal · Dakar, Sénégal
+                    </p>
+                  </div>
+                  <p class="rounded-full bg-emerald-500/10 px-3 py-1 text-[11px] font-medium text-emerald-300">
+                    Juin 2025 – Aujourd’hui
+                  </p>
+                </div>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+                  <li>Accompagnement des utilisateurs dans un contexte bancaire exigeant</li>
+                  <li>Contribution au maintien en condition opérationnelle du parc informatique</li>
+                  <li>Participation à des tâches de développement et d’amélioration continue</li>
+                </ul>
+              </article>
+
+              <article class="glass rounded-3xl p-5 shadow-soft sm:p-6">
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <h3 class="text-sm font-semibold text-slate-50">
+                      Stagiaire Développeur & Support IT
+                    </h3>
+                    <p class="text-xs text-slate-300">
+                      Banque Atlantique Sénégal · Dakar, Sénégal
+                    </p>
+                  </div>
+                  <p class="rounded-full bg-slate-800/80 px-3 py-1 text-[11px] font-medium text-slate-200">
+                    Mars 2024 – Septembre 2024
+                  </p>
+                </div>
+                <p class="mt-2 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                  Principales responsabilités
+                </p>
+                <ul class="mt-2 grid gap-1.5 text-xs text-slate-200 sm:grid-cols-2">
+                  <li>Déploiement de postes de travail</li>
+                  <li>Installation de Windows et Office 2019</li>
+                  <li>Installation d’antivirus (Kaspersky, etc.)</li>
+                  <li>Installation de logiciels divers et pilotes d’imprimantes (Lexmark)</li>
+                  <li>Mise en place de GLPI et déploiement de son agent</li>
+                  <li>Support utilisateurs & gestion des tickets</li>
+                  <li>Initiation à Orion</li>
+                  <li>Initiation à la maintenance informatique</li>
+                </ul>
+              </article>
+
+              <div class="grid gap-4 md:grid-cols-2">
+                <article class="glass rounded-3xl p-5 shadow-soft">
+                  <h3 class="text-sm font-semibold text-slate-50">
+                    Expériences associatives
+                  </h3>
+                  <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+                    <li>
+                      <span class="font-semibold">Association des jeunes et étudiants de Tendouck</span>
+                      – Membre (2021‑2022)
+                    </li>
+                    <li>
+                      <span class="font-semibold">Société de Prévoyance Djibiack</span> – Membre
+                    </li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <!-- Formations -->
+          <section id="formations" class="section-fade space-y-5">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h2 class="text-lg font-semibold tracking-tight text-slate-50 sm:text-xl">
+                  Formations
+                </h2>
+                <p class="text-xs text-slate-300 sm:text-sm">
+                  Un parcours orienté génie logiciel et sécurité des systèmes d’information.
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <article class="glass rounded-3xl p-5 shadow-soft sm:p-6">
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <h3 class="text-sm font-semibold text-slate-50">
+                      Master 1 – Sécurité des Systèmes d’Information (SSI)
+                    </h3>
+                    <p class="text-xs text-slate-300">
+                      ESMT – École Supérieure Multinationale des Télécommunications · Dakar, Sénégal
+                    </p>
+                  </div>
+                  <p class="rounded-full bg-emerald-500/10 px-3 py-1 text-[11px] font-medium text-emerald-300">
+                    2026 – En cours
+                  </p>
+                </div>
+                <p class="mt-2 text-xs text-slate-200">
+                  Approfondissement des concepts de cybersécurité, gestion des risques, protection des
+                  systèmes et des données dans des environnements critiques.
+                </p>
+              </article>
+
+              <article class="glass rounded-3xl p-5 shadow-soft sm:p-6">
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <h3 class="text-sm font-semibold text-slate-50">
+                      Licence 3 – Sciences et Technologie, spécialité Génie Logiciel
+                    </h3>
+                    <p class="text-xs text-slate-300">
+                      Institut Supérieur d’Informatique (Groupe ISI) · Dakar, Sénégal
+                    </p>
+                  </div>
+                  <p class="rounded-full bg-slate-800/80 px-3 py-1 text-[11px] font-medium text-slate-200">
+                    2022 – 2023
+                  </p>
+                </div>
+              </article>
+
+              <article class="glass rounded-3xl p-5 shadow-soft sm:p-6">
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <h3 class="text-sm font-semibold text-slate-50">
+                      Baccalauréat S2 – Mathématiques et Sciences Naturelles
+                    </h3>
+                    <p class="text-xs text-slate-300">
+                      Lycée Demba Diop – LDD · Mbour, Sénégal
+                    </p>
+                  </div>
+                  <p class="rounded-full bg-slate-800/80 px-3 py-1 text-[11px] font-medium text-slate-200">
+                    2018 – 2019
+                  </p>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Certifications -->
+          <section id="certifications" class="section-fade space-y-5">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h2 class="text-lg font-semibold tracking-tight text-slate-50 sm:text-xl">
+                  Certifications & programmes suivis
+                </h2>
+                <p class="text-xs text-slate-300 sm:text-sm">
+                  Un socle de compétences complémentaires en low‑code, data, sécurité, management et
+                  marketing digital.
+                </p>
+              </div>
+            </div>
+
+            <div class="grid gap-4 md:grid-cols-2">
+              <article class="glass rounded-3xl p-5 shadow-soft">
+                <h3 class="text-sm font-semibold text-slate-100">
+                  Développement, low‑code & front‑end
+                </h3>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+                  <li>Programme <span class="font-semibold">Low Code – No Code</span> (Force N, Université Virtuelle du Sénégal)</li>
+                  <li><span class="font-semibold">Développement front‑end</span> – FORCE‑N Sénégal</li>
+                  <li>Maîtriser <span class="font-semibold">GLPI</span> – Udemy</li>
+                </ul>
+              </article>
+
+              <article class="glass rounded-3xl p-5 shadow-soft">
+                <h3 class="text-sm font-semibold text-slate-100">
+                  Sécurité, data & management
+                </h3>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+                  <li>Analyse de données qualitatives</li>
+                  <li>Gestion des incidents de sécurité</li>
+                  <li>Principes fondamentaux de la sécurité en ligne (hub4africa)</li>
+                  <li>Fondamentaux Gestion de Projets – IBM</li>
+                  <li>Communication Soft Skills – FORCE‑N Sénégal</li>
+                  <li>Soft Skills Éthique du Travail – FORCE‑N Sénégal</li>
+                </ul>
+              </article>
+
+              <article class="glass rounded-3xl p-5 shadow-soft">
+                <h3 class="text-sm font-semibold text-slate-100">
+                  Marketing & outils bureautiques
+                </h3>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+                  <li>Marketing Digital – FORCE‑N Sénégal</li>
+                  <li>Introduction au marketing digital – hub4africa</li>
+                  <li>Apprendre Word avec rédacteur Web – Cursa</li>
+                </ul>
+              </article>
+
+              <article class="glass rounded-3xl p-5 shadow-soft">
+                <h3 class="text-sm font-semibold text-slate-100">
+                  Leadership & développement personnel
+                </h3>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+                  <li>
+                    <span class="font-semibold">Why Leadership Isn't About the Leader</span> – Cornerstone OnDemand Foundation
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <!-- Projets -->
+          <section id="projets" class="section-fade space-y-5">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h2 class="text-lg font-semibold tracking-tight text-slate-50 sm:text-xl">
+                  Travaux & projet académique
+                </h2>
+                <p class="text-xs text-slate-300 sm:text-sm">
+                  Application concrète des concepts de génie logiciel sur des cas métiers réels.
+                </p>
+              </div>
+            </div>
+
+            <div class="grid gap-4 md:grid-cols-[2fr,3fr]">
+              <article class="glass rounded-3xl p-5 shadow-soft sm:p-6">
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <h3 class="text-sm font-semibold text-slate-50">
+                      Plateforme de vente en ligne des récoltes agricoles
+                    </h3>
+                    <p class="text-xs text-slate-300">
+                      Mémoire de Licence – Génie Logiciel (2022‑2023)
+                    </p>
+                  </div>
+                  <p class="rounded-full bg-primary-500/10 px-3 py-1 text-[11px] font-medium text-primary-200">
+                    Conception & mise en place
+                  </p>
+                </div>
+                <p class="mt-3 text-xs text-slate-200">
+                  Conception et développement d’une plateforme facilitant la vente en ligne de
+                  récoltes agricoles, avec pour objectifs la mise en relation des producteurs et des
+                  acheteurs, la fluidification des transactions et l’optimisation de la visibilité des
+                  récoltes.
+                </p>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+                  <li>Analyse des besoins des acteurs du secteur agricole</li>
+                  <li>Conception de l’architecture logicielle et du modèle de données</li>
+                  <li>Implémentation des fonctionnalités principales (catalogue, commandes, etc.)</li>
+                  <li>Prise en compte de la sécurité et de la fiabilité de la plateforme</li>
+                </ul>
+              </article>
+
+              <article class="glass rounded-3xl p-5 shadow-soft sm:p-6">
+                <h3 class="text-sm font-semibold text-slate-100">
+                  Comment je peux vous aider
+                </h3>
+                <p class="mt-3 text-xs text-slate-200">
+                  Grâce à mon expérience en support IT, en développement et en sécurité des systèmes
+                  d’information, je peux intervenir sur :
+                </p>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-200">
+                  <li>La conception et l’évolution d’applications métiers sécurisées</li>
+                  <li>Le support et l’accompagnement des équipes métiers et des utilisateurs</li>
+                  <li>La mise en place et le suivi d’outils ITSM (comme GLPI)</li>
+                  <li>La sensibilisation à la sécurité et la gestion de premiers niveaux d’incidents</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <!-- Contact -->
+          <section id="contact" class="section-fade space-y-5">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h2 class="text-lg font-semibold tracking-tight text-slate-50 sm:text-xl">
+                  Me contacter
+                </h2>
+                <p class="text-xs text-slate-300 sm:text-sm">
+                  Une opportunité, une collaboration ou un projet à sécuriser ? Écrivons l’histoire ensemble.
+                </p>
+              </div>
+            </div>
+
+            <div class="grid gap-4 md:grid-cols-[3fr,2fr]">
+              <div class="glass rounded-3xl p-5 shadow-soft sm:p-6">
+                <div class="grid gap-4 text-xs text-slate-200 sm:grid-cols-2">
+                  <div>
+                    <p class="text-[0.7rem] uppercase tracking-wide text-slate-400">
+                      Téléphone
+                    </p>
+                    <p class="mt-1 text-[13px] font-medium">
+                      <a href="tel:+221771608826" class="hover:text-primary-300">
+                        +221 77 160 88 26
+                      </a>
+                      <br />
+                      <a href="tel:+221762522197" class="hover:text-primary-300">
+                        +221 76 252 21 97
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <p class="text-[0.7rem] uppercase tracking-wide text-slate-400">
+                      E-mails & GitHub
+                    </p>
+                    <p class="mt-1 text-[13px] font-medium leading-relaxed">
+                      <a
+                        href="mailto:youssouphawoufeu@gmail.com"
+                        class="hover:text-primary-300"
+                      >
+                        youssouphawoufeu@gmail.com
+                      </a>
+                      <br />
+                      <a href="mailto:youssouph@groupeisi.com" class="hover:text-primary-300">
+                        youssouph@groupeisi.com
+                      </a>
+                    </p>
+                    <p class="mt-2 flex items-center gap-2 text-[12px] text-slate-300">
+                      <span
+                        class="inline-flex h-5 w-5 items-center justify-center rounded-full border border-slate-600/70 bg-slate-900/80"
+                        aria-hidden="true"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          class="h-3.5 w-3.5 text-slate-200"
+                          fill="currentColor"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M12 2C6.477 2 2 6.486 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.238-.01-1.025-.014-1.86-2.782.605-3.369-1.194-3.369-1.194-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.004.071 1.532 1.033 1.532 1.033.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.338-2.222-.253-4.555-1.115-4.555-4.961 0-1.095.39-1.99 1.029-2.69-.103-.253-.447-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.32c.85.004 1.705.115 2.504.337 1.909-1.296 2.748-1.027 2.748-1.027.546 1.379.202 2.398.1 2.651.64.7 1.027 1.595 1.027 2.69 0 3.857-2.337 4.705-4.566 4.953.359.31.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.486 17.523 2 12 2Z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </span>
+                      <a
+                        href="https://github.com/you7716"
+                        target="_blank"
+                        rel="noreferrer"
+                        class="font-medium text-slate-100 hover:text-primary-300"
+                      >
+                        github.com/you7716
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="mt-4 text-xs text-slate-300">
+                  <p class="text-[0.7rem] uppercase tracking-wide text-slate-400">
+                    Localisation
+                  </p>
+                  <p class="mt-1">
+                    Grand Dakar, Dakar – Sénégal
+                  </p>
+                </div>
+
+                <p class="mt-4 text-[11px] text-slate-400">
+                  Disponible pour des opportunités en développement logiciel, support IT et
+                  sécurité des systèmes d’information.
+                </p>
+              </div>
+
+              <div class="glass rounded-3xl p-5 shadow-soft sm:p-6">
+                <h3 class="text-sm font-semibold text-slate-100">
+                  Prochaine étape
+                </h3>
+                <p class="mt-3 text-xs text-slate-200">
+                  Envoyez‑moi un e‑mail avec :
+                </p>
+                <ul class="mt-2 space-y-1.5 text-xs text-slate-200">
+                  <li>Une courte présentation de votre organisation ou de votre projet</li>
+                  <li>Le contexte technique et fonctionnel</li>
+                  <li>Les délais et objectifs principaux</li>
+                </ul>
+                <p class="mt-3 text-xs text-slate-200">
+                  Je vous répondrai rapidement pour échanger sur la meilleure façon de collaborer.
+                </p>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="border-t border-slate-800/80 bg-slate-950/80">
+          <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-4 text-[11px] text-slate-500 sm:flex-row sm:px-6">
+            <p>© <span id="year"></span> · Youssouph Sagna · Tous droits réservés.</p>
+            <p class="text-[10px]">
+              Portfolio conçu pour refléter mon parcours en génie logiciel et sécurité des SI.
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      // Année dynamique
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Scroll fluide
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (e) => {
+          const targetId = link.getAttribute("href").slice(1);
+          const target = document.getElementById(targetId);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      // Apparition progressive des sections
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+        }
+      );
+
+      document.querySelectorAll(".section-fade").forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
+
