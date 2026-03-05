@@ -16,6 +16,8 @@ if not index_path.exists():
     st.error("Le fichier index.html est introuvable dans le dossier de l'application.")
 else:
     html_content = index_path.read_text(encoding="utf-8")
+    # Adapter le chemin de l'image pour Streamlit (dossier static)
+    html_content = html_content.replace("assets/profile.jpg", "static/profile.jpg")
     # Affiche le portfolio complet dans un composant HTML
     st_html(html_content, height=1000, scrolling=True)
 
